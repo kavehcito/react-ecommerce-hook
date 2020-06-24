@@ -35,6 +35,9 @@
     "prepublishOnly": "yarn jest && yarn format && yarn lint && yarn clean && yarn build",
     "coverage": "jest --coverage"
   },
+  "precommit": [
+    "build"
+  ],
   "dependencies": {
     "lodash.omit": "^4.5.0",
     "react": "^16.13.1",
