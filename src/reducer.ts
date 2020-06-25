@@ -49,8 +49,7 @@ const addedIds = (state = initialState.addedIds, action): TypeAddedIds => {
 
 const products = (state = initialState.products, action) : TypeProducts => {
   const {
-    payload: { product },
-    id: {id}
+    payload: { product, id }
   } = action;
 
   switch (action.type) {
