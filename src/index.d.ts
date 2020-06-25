@@ -7,6 +7,7 @@ declare function useCart(): EcommerceHook.IEcommerceHookReturn;
 
 declare namespace EcommerceHook {
   type TypeAddedIds = number[];
+  type Products = object[];
 
   interface IQuantityById {
     [key: string]: number;
@@ -14,11 +15,13 @@ declare namespace EcommerceHook {
 
   export interface ICartState {
     addedIds: TypeAddedIds;
+    products: Products;
     quantityById: IQuantityById;
   }
 
   export interface IAddToCartPayload {
     id: number;
+    product: object;
     isUnique?: boolean;
   }
 

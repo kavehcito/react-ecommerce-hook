@@ -9,11 +9,12 @@ describe('cart reducer', () => {
   it('should add item to cart', () => {
     const createdAction = {
       type: actions.ADD_TO_CART,
-      payload: { id: 1 },
+      payload: { id: 1, product: {objectID:'abc'}},
     };
     expect(cartReducer(initialState, createdAction)).toEqual({
       ...initialState,
       addedIds: [1],
+      products: {objectID: 'abc'},
       quantityById: { 1: 1 },
     });
   });
@@ -28,6 +29,7 @@ describe('cart reducer', () => {
       cartReducer(
         {
           addedIds: [1],
+          products: [{objectID: 'abc'}],
           quantityById: { 1: 1 },
         },
         createdAction
@@ -35,6 +37,7 @@ describe('cart reducer', () => {
     ).toEqual({
       ...initialState,
       addedIds: [1],
+      products: [{objectID: 'abc'}],
       quantityById: { 1: 2 },
     });
   });
@@ -49,6 +52,7 @@ describe('cart reducer', () => {
       cartReducer(
         {
           addedIds: [1],
+          products: [{objectID: 'abc'}],
           quantityById: { 1: 1 },
         },
         createdAction
@@ -56,6 +60,7 @@ describe('cart reducer', () => {
     ).toEqual({
       ...initialState,
       addedIds: [1],
+      products: [{objectID: 'abc'}],
       quantityById: { 1: 2 },
     });
   });
@@ -69,6 +74,7 @@ describe('cart reducer', () => {
     const state = cartReducer(
       {
         addedIds: [1],
+        products: [{objectID: 'abc'}],
         quantityById: { 1: 1 },
       },
       createAction()
@@ -76,6 +82,7 @@ describe('cart reducer', () => {
     expect(cartReducer(state, createAction(false))).toEqual({
       ...initialState,
       addedIds: [],
+      products: [],
       quantityById: {},
     });
   });
@@ -89,6 +96,7 @@ describe('cart reducer', () => {
     const state = cartReducer(
       {
         addedIds: [1],
+        products: [{objectID: 'abc'}],
         quantityById: { 1: 1 },
       },
       createAction()
@@ -97,6 +105,7 @@ describe('cart reducer', () => {
     expect(cartReducer(state, createAction(false))).toEqual({
       ...initialState,
       addedIds: [1],
+      products: [{objectID: 'abc'}],
       quantityById: { 1: 1 },
     });
   });

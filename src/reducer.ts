@@ -9,16 +9,21 @@ import {
 
 export const initialState = {
   addedIds: [],
+  products: [{objectID:""}],
   quantityById: {},
 };
 
 type TypeAddedIds = number[];
+type TypeProducts = any[];
 interface IQuantityById {
   [key: string]: number;
 }
 
+
+
 interface IStateType {
   addedIds: TypeAddedIds;
+  products: TypeProducts;
   quantityById: IQuantityById;
 }
 
@@ -42,6 +47,26 @@ const addedIds = (state = initialState.addedIds, action): TypeAddedIds => {
   }
 };
 
+const products = (state = initialState.products, action) : TypeProducts => {
+  const {
+    payload: { product },
+  } = action;
+
+  switch (action.type) {
+    case ADD_TO_CART:
+      if (state.findIndex(item => item.objectID === product.objectID ) !== -1) {
+        return state;
+      }
+
+      return [...state, product];
+    case REMOVE_FROM_CART:
+      return [...state].filter(item => item.objectID !== product.objectID);
+
+    default:
+      return state;
+  }
+
+}
 const quantityById = (
   state = initialState.quantityById,
   action
@@ -89,6 +114,7 @@ export const cartReducer = (state = initialState, action): IStateType => {
     case DECREASE_QUANTITY:
       return {
         addedIds: addedIds(state.addedIds, action),
+        products: products(state.products, action),
         quantityById: quantityById(state.quantityById, action),
       };
     default:

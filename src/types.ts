@@ -1,5 +1,6 @@
 export interface IAddToCartPayload {
   id: number;
+  product: object;
   isUnique?: boolean;
 }
 
