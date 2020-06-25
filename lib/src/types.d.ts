@@ -5,5 +5,4 @@ export interface IAddToCartPayload {
 }
 export interface IIdPayload {
     id: number;
-    product: object;
 }

@@ -50,6 +50,7 @@ const addedIds = (state = initialState.addedIds, action): TypeAddedIds => {
 const products = (state = initialState.products, action) : TypeProducts => {
   const {
     payload: { product },
+    id: {id}
   } = action;
 
   switch (action.type) {
@@ -61,8 +62,8 @@ const products = (state = initialState.products, action) : TypeProducts => {
       return [...state, product];
     case REMOVE_FROM_CART:
       console.log('state is', state)
-      console.log('product is', product)
-      return state.filter(item => item.objectID !== product.objectID);
+      console.log('id is', id)
+      return state.filter(item => item.objectID !== id);
 
     default:
       return state;

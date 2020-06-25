@@ -28,7 +28,7 @@ export const useCart = () => {
     state,
     addToCart: ({ id, product, isUnique = false }: IAddToCartPayload) =>
       dispatch(action(ADD_TO_CART, { id, product, isUnique })),
-    removeFromCart: ({ id, product }: IIdPayload) =>
+    removeFromCart: ({ id }: IIdPayload) =>
       dispatch(action(REMOVE_FROM_CART, { id })),
     increaseQuantity: ({ id }: IIdPayload) =>
       dispatch(action(INCREASE_QUANTITY, { id })),
