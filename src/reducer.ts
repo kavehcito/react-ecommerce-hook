@@ -52,17 +52,16 @@ const products = (state = initialState.products, action) : TypeProducts => {
   const {
     payload: { id, product }
   } = action;
-  
+
   switch (action.type) {
     case ADD_TO_CART:
       if (state.findIndex(item => item.objectID === product.objectID ) !== -1) {
         return state;
       }
-
       return [...state, product];
     case REMOVE_FROM_CART:
       console.log('state is', state)
-      console.log('id is', product.objectID)
+      console.log('id is', id)
       return state.filter(item => item.objectID !== id);
 
     default:
