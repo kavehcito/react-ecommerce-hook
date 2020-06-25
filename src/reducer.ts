@@ -48,10 +48,11 @@ const addedIds = (state = initialState.addedIds, action): TypeAddedIds => {
 };
 
 const products = (state = initialState.products, action) : TypeProducts => {
+  console.log("payload is", action)
   const {
     payload: { id, product }
   } = action;
-
+  
   switch (action.type) {
     case ADD_TO_CART:
       if (state.findIndex(item => item.objectID === product.objectID ) !== -1) {
