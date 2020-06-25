@@ -9,7 +9,7 @@ import {
 
 export const initialState = {
   addedIds: [],
-  products: [{objectID:""}],
+  products: [],
   quantityById: {},
 };
 
@@ -60,7 +60,9 @@ const products = (state = initialState.products, action) : TypeProducts => {
 
       return [...state, product];
     case REMOVE_FROM_CART:
-      return [...state].filter(item => item.objectID !== product.objectID);
+      console.log('state is', state)
+      console.log('product is', product)
+      return state.filter(item => item.objectID !== product.objectID);
 
     default:
       return state;

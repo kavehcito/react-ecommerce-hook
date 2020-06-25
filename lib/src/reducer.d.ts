@@ -1,8 +1,6 @@
 export declare const initialState: {
     addedIds: any[];
-    products: {
-        objectID: string;
-    }[];
+    products: any[];
     quantityById: {};
 };
 declare type TypeAddedIds = number[];
@@ -17,9 +15,7 @@ interface IStateType {
 }
 export declare const cartReducer: (state: {
     addedIds: any[];
-    products: {
-        objectID: string;
-    }[];
+    products: any[];
     quantityById: {};
 }, action: any) => IStateType;
 export {};
