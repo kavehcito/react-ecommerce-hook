@@ -48,7 +48,7 @@ const addedIds = (state = initialState.addedIds, action): TypeAddedIds => {
 };
 
 const products = (state = initialState.products, action) : TypeProducts => {
-  console.log("payload is", action)
+
   const {
     payload: { id, product }
   } = action;
@@ -60,8 +60,7 @@ const products = (state = initialState.products, action) : TypeProducts => {
       }
       return [...state, product];
     case REMOVE_FROM_CART:
-      console.log('state is', state)
-      console.log('id is', id)
+
       return state.filter(item => item.objectID !== id);
 
     default:
